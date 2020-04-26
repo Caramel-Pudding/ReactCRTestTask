@@ -4,6 +4,7 @@ export const LOG_IN = 'LOG_IN';
 export const LOG_OUT = 'LOG_OUT';
 export const LOG_IN_FAILURE = 'LOG_IN_FAILURE';
 
+// *A note about redirection, read at App.jsx
 export function logIn(params, next) {
   return dispatch => {
     if (checkCredentials(params)) {
@@ -13,6 +14,7 @@ export function logIn(params, next) {
             name: params.userName,
           },
         });
+      // *A note about redirection, read at App.jsx
       next()
     } else {
       dispatch({

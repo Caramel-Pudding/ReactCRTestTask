@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom'
 
 class Login extends PureComponent {
   state = {
+    // *A note about redirection, read at App.jsx
     redirectToPreviousRoute: false,
     userName: '',
     password: '',
@@ -18,6 +19,7 @@ class Login extends PureComponent {
         userName,
         password,
       },
+      // *A note about redirection, read at App.jsx
       () => {
         this.setState({ redirectToPreviousRoute: true })
       }
@@ -28,6 +30,9 @@ class Login extends PureComponent {
     const value = e.currentTarget.value
     const fieldName = e.currentTarget.dataset.fieldName
 
+    // Should be improved:
+    // Unlike with regular objects you don't actually need to manually spread React's satete to 
+    // apply changes to desired field and copy else. It happens automatycally
     this.setState(prev => ({
       ...prev,
       [fieldName]: value,
@@ -36,9 +41,11 @@ class Login extends PureComponent {
 
   render() {
     const { location, errorMessage } = this.props
+    // *A note about redirection, read at App.jsx
     const { from } = location.state || { from: { pathname: '/' } }
     const { userName, password, redirectToPreviousRoute } = this.state
 
+    // *A note about redirection, read at App.jsx
     if (redirectToPreviousRoute) {
       return <Redirect to={from} />
     }

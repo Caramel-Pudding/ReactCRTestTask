@@ -1,5 +1,7 @@
 import React from 'react'
 
+// Must be fixed:
+// You seem to not use any data here so this argument may be freely removed
 const NotFound = ({ data }) => {
   return (
     <React.Fragment>
